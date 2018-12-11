@@ -15,7 +15,7 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return parameter.getParameterType().isAssignableFrom(Integer.class) && parameter.hasParameterAnnotation(LoginUser.class);
+        return parameter.getParameterType().isAssignableFrom(Long.class) && parameter.hasParameterAnnotation(LoginUser.class);
     }
 
     @Override
@@ -27,7 +27,6 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
         if (token == null || token.isEmpty()) {
             return null;
         }
-
-        return JWTUtil.unsign(token, Integer.class);
+        return JWTUtil.unsign(token, Long.class);
     }
 }

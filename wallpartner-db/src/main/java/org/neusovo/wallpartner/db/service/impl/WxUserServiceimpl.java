@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WxUserServiceimpl implements WxUserService {
@@ -28,5 +29,10 @@ public class WxUserServiceimpl implements WxUserService {
     @Override
     public WxUser findByWxOpenid(String openid) {
         return wxUserRepository.findByWxOpenid(openid);
+    }
+
+    @Override
+    public Optional<WxUser> getOne(Long id) {
+        return wxUserRepository.findById(id);
     }
 }

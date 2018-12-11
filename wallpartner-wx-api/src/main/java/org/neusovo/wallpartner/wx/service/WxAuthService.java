@@ -19,7 +19,7 @@ public class WxAuthService {
     @Autowired
     private WxUserService wxUserService;
 
-    public R regWxUser(WxReginInfo wxReginInfo, String openid){
+    public R regWxUser(WxReginInfo wxReginInfo, String openid) {
         WxUserInfo wxUserInfo = new WxUserInfo();
 
         wxUserInfo.setNickName(wxReginInfo.getNickName());
@@ -29,16 +29,14 @@ public class WxAuthService {
         wxUserInfo.setCountry(wxReginInfo.getCountry());
         wxUserInfo.setLanguage(wxReginInfo.getLanguage());
         wxUserInfo.setProvince(wxReginInfo.getProvince());
-
-
         WxUser wxUser;
 
         wxUser = wxUserService.findByWxOpenid(openid);
-        if (wxUser!=null){
+        if (wxUser != null) {
             wxUserInfo.setWxUser(wxUser);
             wxUserInfo.setId(wxUser.getWxUserInfo().getId());
             wxUser.setWxUserInfo(wxUserInfo);
-        }else{
+        } else {
             wxUser = new WxUser();
             wxUser.setWxOpenid(openid);
             wxUserInfo.setWxUser(wxUser);
@@ -46,16 +44,16 @@ public class WxAuthService {
         }
 
 
-        if (wxUserService.addWxUser(wxUser)){
+        if (wxUserService.addWxUser(wxUser)) {
             String token = JWTUtil.sign(wxUser.getId());
             return new R().success().setData("token", token)
-                    .setData("info",wxUser);
-        }else{
+                    .setData("info", wxUser);
+        } else {
             return new R().error("注册失败");
         }
     }
 
-    public List<WxUser> getUsers(){
+    public List<WxUser> getUsers() {
         return wxUserService.allUsers();
     }
 

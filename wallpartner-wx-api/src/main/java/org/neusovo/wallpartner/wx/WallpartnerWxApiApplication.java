@@ -1,6 +1,5 @@
 package org.neusovo.wallpartner.wx;
 
-import com.google.common.collect.Lists;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -13,6 +12,8 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.ApiKey;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+
+import java.util.Collections;
 
 @EnableConfigurationProperties
 @SpringBootApplication(scanBasePackages = {"org.neusovo.wallpartner"})
@@ -31,7 +32,7 @@ public class WallpartnerWxApiApplication {
                 .apis(RequestHandlerSelectors.basePackage("org.neusovo.wallpartner.wx.controller")) //过滤的接口
                 .paths(PathSelectors.any())
                 .build()
-                .securitySchemes(Lists.newArrayList(apiKey()));
+                .securitySchemes(Collections.singletonList(apiKey()));
     }
 
     private ApiInfo getApiInfo() {
@@ -44,6 +45,6 @@ public class WallpartnerWxApiApplication {
     }
 
     private ApiKey apiKey() {
-        return new ApiKey("apikey", "Authorization", "header");
+        return new ApiKey("apiKey", "Authorization", "header");
     }
 }
