@@ -36,6 +36,7 @@ public class WxAuthService {
         wxUser = wxUserService.findByWxOpenid(openid);
         if (wxUser!=null){
             wxUserInfo.setWxUser(wxUser);
+            wxUserInfo.setId(wxUser.getWxUserInfo().getId());
             wxUser.setWxUserInfo(wxUserInfo);
         }else{
             wxUser = new WxUser();
@@ -46,7 +47,7 @@ public class WxAuthService {
 
 
         if (wxUserService.addWxUser(wxUser)){
-            String token = JWTUtil.sign(wxUser);
+            String token = JWTUtil.sign(wxUser.getId());
             return new R().success().setData("token", token)
                     .setData("info",wxUser);
         }else{

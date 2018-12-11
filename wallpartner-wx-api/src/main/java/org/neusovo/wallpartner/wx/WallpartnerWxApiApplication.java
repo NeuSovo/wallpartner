@@ -2,7 +2,6 @@ package org.neusovo.wallpartner.wx;
 
 import com.google.common.collect.Lists;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.ApiKey;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -34,7 +34,7 @@ public class WallpartnerWxApiApplication {
                 .securitySchemes(Lists.newArrayList(apiKey()));
     }
 
-    private springfox.documentation.service.ApiInfo getApiInfo() {
+    private ApiInfo getApiInfo() {
         return new ApiInfoBuilder()
                 .title("Swagger")
                 .version("0.0.1")

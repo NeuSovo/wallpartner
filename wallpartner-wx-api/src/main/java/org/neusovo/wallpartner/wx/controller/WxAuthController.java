@@ -11,6 +11,7 @@ import org.neusovo.wallpartner.wx.service.WxAuthService;
 import org.neusovo.wallpartner.wx.util.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.List;
@@ -57,7 +58,7 @@ public class WxAuthController {
     }
 
     @GetMapping("check")
-    public WxUser check(@LoginUser WxUser wxuser){
+    public WxUser check(@ApiIgnore @LoginUser WxUser wxuser){
         System.out.println(wxuser);
 
         return wxuser;

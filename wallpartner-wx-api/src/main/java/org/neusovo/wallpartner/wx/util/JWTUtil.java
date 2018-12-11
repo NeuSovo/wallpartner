@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class JWTUtil {
     private static final long EXPIRE_TIME =  24 * 60 * 1000;
-    private static final String SECRET = "XX#$%()(#*!()!KL<><MQLMNQNQJQK sdfkjsdrow32234545fdf>?N<:{LWPW";
+    private static final String SECRET = "XX#$%()(#*!()!KL<>WW";
 
     private static final String EXP = "exp";
 
