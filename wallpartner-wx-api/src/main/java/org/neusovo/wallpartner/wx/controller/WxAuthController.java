@@ -75,4 +75,16 @@ public class WxAuthController {
         }
         return new R().success().setData("info", wxUserService.getOne(userId));
     }
+
+
+    private static final int _1M = 1024*1024;
+
+    @PostMapping(value = "/test")
+    public R test(Integer mem, Integer num ){
+        for (int i = 0; i < num ; i++) {
+            byte [] mems = new byte[mem * _1M];
+        }
+
+        return new R().success();
+    }
 }
