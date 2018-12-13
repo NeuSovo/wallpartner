@@ -25,6 +25,7 @@
     <modules>
         <module>wallpartner-db</module>
         <module>wallpartner-wx-api</module>
+        <module>wallpartner-admin-api</module>
     </modules>
 
     <dependencyManagement>
@@ -38,6 +39,12 @@
             <dependency>
                 <groupId>org.neusovo</groupId>
                 <artifactId>wallpartner-wx-api</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.neusovo</groupId>
+                <artifactId>wallpartner-admin-api</artifactId>
                 <version>0.0.1</version>
             </dependency>
 
